@@ -18,10 +18,8 @@ Then, add it to your `gulpfile.js`:
 ```javascript
 var webpcss = require("gulp-webpcss");
 
-gulp.src("./src/*.ext")
-	.pipe(webpcss({
-		msg: "Hello Gulp!"
-	}))
+gulp.src("./src/*.css")
+	.pipe(webpcss({}))
 	.pipe(gulp.dest("./dist"));
 ```
 
@@ -29,12 +27,81 @@ gulp.src("./src/*.ext")
 
 ### webpcss(options)
 
-#### options.msg
-Type: `String`  
-Default: `Hello World`
+#### options.baseClass
+Type: `String`
+Default value: `'.webp'`
 
-The message you wish to attach to file.
+Class which prepend selector. For expample:  
+before
+```css
+.test { background-image:url('test.png'); }
+```
 
+after
+```css
+.test { background-image:url('test.png'); }
+.webp .test { background-image:url('test.webp'); }
+```
+
+.webp class indicate webp browser support. Reccomends to use [Modernizr](https://modernizr.com/‎)
+
+#### options.replace_from
+Type: `RegExp`
+Default value: `/\.(png|jpg|jpeg)/,`
+
+RegExp pattern for replace
+
+#### options.replace_to
+Type: `String`
+Default value: `.webp`
+
+### Usage Examples
+
+#### Default Options
+In this example, the default options are used to do something with whatever. 
+Css transforms from
+```css
+.test { background-image:url('test.png'); }
+```
+to
+```css
+.test { background-image:url('test.png'); }
+.webp .test { background-image:url('test.webp'); }
+```
+
+
+```js
+var webpcss = require("gulp-webpcss");
+
+gulp.src("./src/*.css")
+	.pipe(webpcss({}))
+	.pipe(gulp.dest("./dist"));
+```
+
+#### Custom Options
+In this example, the default options are used to do something with whatever. 
+Css transforms from
+```css
+.test { background-image:url('test.png'); }
+```
+to
+```css
+.test { background-image:url('test.png'); }
+.webp1 .test { background-image:url('test.webp'); }
+```
+
+
+```js
+var webpcss = require("gulp-webpcss");
+
+gulp.src("./src/default_options.css")
+	.pipe(webpcss({
+	  baseClass:'.webp1',
+      replace_from:/\.(png|jpg|jpeg)/,
+      replace_to:'.webp',
+	}))
+	.pipe(gulp.dest("./dist"));
+```
 
 ## License
 

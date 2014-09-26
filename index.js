@@ -1,13 +1,16 @@
 var through = require("through2"),
-	gutil = require("gulp-util");
+	gutil = require("gulp-util"),
+	_ = require('lodash'),
+	webpcss_transform = require('webpcss-transform');
 
 module.exports = function (param) {
 	"use strict";
 
-	// if necessary check for required param(s), e.g. options hash, etc.
-	if (!param) {
-		throw new gutil.PluginError("gulp-webpcss", "No param supplied");
-	}
+	var options = _.defaults(param || {}, {
+		baseClass:'.webp',
+		replace_from:/\.(png|jpg|jpeg)/,
+		replace_to:'.webp'
+	});
 
 	// see "Writing a plugin"
 	// https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/README.md
@@ -34,11 +37,7 @@ module.exports = function (param) {
 
 		// check if file.contents is a `Buffer`
 		if (file.isBuffer()) {
-
-			// manipulate buffer in some way
-			// http://nodejs.org/api/buffer.html
-			file.contents = new Buffer(String(file.contents) + "\n" + param);
-
+			file.contents = new Buffer( webpcss_transform(file.contents, options));
 			this.push(file);
 
 		}
