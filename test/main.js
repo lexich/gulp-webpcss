@@ -48,7 +48,6 @@ describe("gulp-webpcss", function () {
 
 			should.exist(newFile);
 			should.exist(newFile.contents);
-
 			String(newFile.contents).should.equal(String(expectedFile.contents));
 			done();
 		});
@@ -58,7 +57,6 @@ describe("gulp-webpcss", function () {
 	});
 
 	it("should produce expected file 2 via buffer", function (done) {
-
 		var srcFile = new gutil.File({
 			path: "test/fixtures/testing.css",
 			cwd: "test/",
@@ -68,7 +66,7 @@ describe("gulp-webpcss", function () {
 
 		var stream = webpcss({
 			baseClass:'.webp1',
-          	replace_to:'.webp'
+      replace_to:'.webp'
 		});
 
 		stream.on("error", function(err) {
@@ -80,7 +78,6 @@ describe("gulp-webpcss", function () {
 
 			should.exist(newFile);
 			should.exist(newFile.contents);
-
 			String(newFile.contents).should.equal(String(expectedFile2.contents));
 			done();
 		});
