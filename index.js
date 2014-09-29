@@ -1,48 +1,33 @@
 var through = require("through2"),
-	gutil = require("gulp-util"),
-	_ = require('lodash'),
-	webpcss_transform = require('webpcss-transform');
+  gutil = require("gulp-util"),
+  _ = require('lodash'),
+  webpcss = require('webpcss')
 
-module.exports = function (param) {
-	"use strict";
+var fs = require("fs");
 
-	var options = _.defaults(param || {}, {
-		baseClass:'.webp',
-		replace_from:/\.(png|jpg|jpeg)/,
-		replace_to:'.webp'
-	});
+module.exports = function (params) {
+  "use strict";
 
-	// see "Writing a plugin"
-	// https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/README.md
-	function webpcss(file, enc, callback) {
-		/*jshint validthis:true*/
+  function webpcss_func(file, enc, callback) {
+    /*jshint validthis:true*/
 
-		// Do nothing if no contents
-		if (file.isNull()) {
-			this.push(file);
-			return callback();
-		}
+    if (file.isNull()) {
+      this.push(file);
+      return callback();
+    }
 
-		if (file.isStream()) {
+    if (file.isStream()) {
+      this.emit("error",
+        new gutil.PluginError("gulp-webpcss", "Stream content is not supported"));
+      return callback();
+    }
 
-			// http://nodejs.org/api/stream.html
-			// http://nodejs.org/api/child_process.html
-			// https://github.com/dominictarr/event-stream
+    if (file.isBuffer()) {
+      file.contents = new Buffer(webpcss.transform(file.contents, params));
+      this.push(file);
+    }
+    return callback();
+  }
 
-			// accepting streams is optional
-			this.emit("error",
-				new gutil.PluginError("gulp-webpcss", "Stream content is not supported"));
-			return callback();
-		}
-
-		// check if file.contents is a `Buffer`
-		if (file.isBuffer()) {
-			file.contents = new Buffer( webpcss_transform(file.contents, options));
-			this.push(file);
-
-		}
-		return callback();
-	}
-
-	return through.obj(webpcss);
+  return through.obj(webpcss_func);
 };

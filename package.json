@@ -7,7 +7,7 @@
   ],
   "author": {
     "name": "Efremov Alex",
-    "email": "",
+    "email": "lexich121@gmail.com",
     "url": "https://github.com/lexich"
   },
   "repository": "lexich/gulp-webpcss",
@@ -19,7 +19,7 @@
     "gulp-util": "~2.2.0",
     "lodash": "^2.4.1",
     "through2": "*",
-    "webpcss-transform": "0.0.2"
+    "webpcss": "0.0.4"
   },
   "devDependencies": {
     "mocha": "*",
