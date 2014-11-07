@@ -79,7 +79,7 @@ gulp.src("./src/default_options.css")
 
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+[MIT License](https://github.com/lexich/gulp-webpcss/blob/master/LICENSE)
 
 [npm-url]: https://npmjs.org/package/gulp-webpcss
 [npm-image]: https://badge.fury.io/js/gulp-webpcss.png
