@@ -92,3 +92,7 @@ gulp.src("./src/default_options.css")
 
 [depstat-url]: https://david-dm.org/lexich/gulp-webpcss
 [depstat-image]: https://david-dm.org/lexich/gulp-webpcss.png
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/lexich/gulp-webpcss/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
