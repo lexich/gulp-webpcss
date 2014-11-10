@@ -2,7 +2,11 @@ Grunt analog: [grunt-webpcss](https://github.com/lexich/grunt-webpcss)
 PostCSS filter: [webpcss](https://github.com/lexich/webpcss)  
 
 # gulp-webpcss
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]  [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url]
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![Dependency Status][depstat-image]][depstat-url]
+[![DevDependency Status][devstat-image]][devstat-url]
 
 > webpcss plugin for [gulp](https://github.com/wearefractal/gulp)
 
@@ -91,7 +95,10 @@ gulp.src("./src/default_options.css")
 [coveralls-image]: https://coveralls.io/repos/lexich/gulp-webpcss/badge.png
 
 [depstat-url]: https://david-dm.org/lexich/gulp-webpcss
-[depstat-image]: https://david-dm.org/lexich/gulp-webpcss.png
+[depstat-image]: https://david-dm.org/lexich/gulp-webpcss.svg
+
+[devstat-url]:https://david-dm.org/lexich/gulp-webpcss#info=devDependencies
+[devstat-image]:https://david-dm.org/lexich/gulp-webpcss/dev-status.svg
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/lexich/gulp-webpcss/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
