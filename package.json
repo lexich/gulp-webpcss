@@ -19,7 +19,7 @@
     "gulp-util": "^2.2.20",
     "lodash": "^2.4.1",
     "through2": "^0.6.3",
-    "webpcss": "0.0.9"
+    "webpcss": "0.0.10"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
