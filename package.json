@@ -1,6 +1,6 @@
 {
   "name": "gulp-webpcss",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A plugin for Gulp",
   "keywords": [
     "gulpplugin"
@@ -19,7 +19,7 @@
     "gulp-util": "^3.0.1",
     "lodash": "^2.4.1",
     "through2": "^0.6.3",
-    "webpcss": "0.0.12"
+    "webpcss": "0.0.13"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
@@ -27,7 +27,7 @@
     "istanbul": "^0.3.2",
     "mocha": "^2.0.1",
     "mocha-lcov-reporter": "0.0.1",
-    "should": "^4.1.0"
+    "should": "^4.6.1"
   },
   "engines": {
     "node": ">=0.8.0",
