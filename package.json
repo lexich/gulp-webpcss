@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "gulp-util": "^3.0.4",
-    "lodash": "^3.7.0",
+    "lodash": "^3.8.0",
     "through2": "^0.6.5",
     "webpcss": "1.0.0"
   },
