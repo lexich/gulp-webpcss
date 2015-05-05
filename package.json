@@ -12,7 +12,9 @@
   },
   "repository": "lexich/gulp-webpcss",
   "scripts": {
-    "test": "istanbul test _mocha --report html -- test/*.js --reporter spec",
+    "test": "npm run jshint && npm run jscs && istanbul test _mocha --report html -- test/*.js --reporter spec",
+    "jshint": "./node_modules/.bin/jshint --reporter ./node_modules/jshint-stylish/stylish.js",
+    "jscs": "node_modules/.bin/jscs .",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "dependencies": {
@@ -26,6 +28,9 @@
     "coveralls": "^2.11.2",
     "event-stream": "^3.3.0",
     "istanbul": "^0.3.13",
+    "jscs": "^1.13.1",
+    "jshint": "^2.7.0",
+    "jshint-stylish": "^1.0.2",
     "mocha": "^2.2.4",
     "mocha-lcov-reporter": "0.0.2"
   },
