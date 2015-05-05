@@ -1,6 +1,6 @@
 {
   "name": "gulp-webpcss",
-  "version": "0.0.14",
+  "version": "1.0.0",
   "description": "A plugin for Gulp",
   "keywords": [
     "gulpplugin"
@@ -12,25 +12,30 @@
   },
   "repository": "lexich/gulp-webpcss",
   "scripts": {
-    "test": "istanbul test _mocha --report html -- test/*.js --reporter spec",
+    "test": "npm run jshint && npm run jscs && istanbul test _mocha --report html -- test/*.js --reporter spec",
+    "jshint": "./node_modules/.bin/jshint --reporter ./node_modules/jshint-stylish/stylish.js",
+    "jscs": "node_modules/.bin/jscs .",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "dependencies": {
-    "gulp-util": "^3.0.1",
-    "lodash": "^2.4.1",
-    "through2": "^0.6.3",
-    "webpcss": "0.0.14"
+    "gulp-util": "^3.0.4",
+    "lodash": "^3.7.0",
+    "through2": "^0.6.5",
+    "webpcss": "1.0.0"
   },
   "devDependencies": {
+    "chai": "^2.3.0",
     "coveralls": "^2.11.2",
-    "event-stream": "^3.1.7",
-    "istanbul": "^0.3.2",
-    "mocha": "^2.0.1",
-    "mocha-lcov-reporter": "0.0.1",
-    "should": "^4.6.1"
+    "event-stream": "^3.3.0",
+    "istanbul": "^0.3.13",
+    "jscs": "^1.13.1",
+    "jshint": "^2.7.0",
+    "jshint-stylish": "^1.0.2",
+    "mocha": "^2.2.4",
+    "mocha-lcov-reporter": "0.0.2"
   },
   "engines": {
-    "node": ">=0.8.0",
+    "node": ">=0.10.0",
     "npm": ">=1.2.10"
   },
   "license": "MIT"
