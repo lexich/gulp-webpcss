@@ -1,33 +1,40 @@
-var through = require("through2"),
-  gutil = require("gulp-util"),
-  _ = require('lodash'),
-  webpcss = require('webpcss')
+"use strict";
 
-var fs = require("fs");
+var through2 = require("through2"),
+  webpcss = require("webpcss");
 
-module.exports = function (params) {
-  "use strict";
+function transform(self, contents, params, file, callback) {
+  return webpcss.transform(contents, params)
+    .then(function(res) {
+      file.contents = new Buffer(res.css);
+      self.push(file);
+      callback();
+    })
+    .catch(callback);
+}
 
+module.exports = function(params) {
   function webpcss_func(file, enc, callback) {
     /*jshint validthis:true*/
-
     if (file.isNull()) {
       this.push(file);
       return callback();
     }
 
+    var self = this;
     if (file.isStream()) {
-      this.emit("error",
-        new gutil.PluginError("gulp-webpcss", "Stream content is not supported"));
-      return callback();
+      var buffers = [];
+      file.contents.on("data", function(d) {
+        buffers.push(d);
+      });
+      file.contents.on("end", function() {
+        transform(self, Buffer.concat(buffers), params, file, callback);
+      });
     }
 
     if (file.isBuffer()) {
-      file.contents = new Buffer(webpcss.transform(file.contents, params));
-      this.push(file);
+      transform(self, file.contents, params, file, callback);
     }
-    return callback();
   }
-
-  return through.obj(webpcss_func);
+  return through2.obj(webpcss_func);
 };
