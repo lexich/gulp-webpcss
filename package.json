@@ -1,6 +1,6 @@
 {
   "name": "gulp-webpcss",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "A plugin for Gulp",
   "keywords": [
     "gulpplugin"
@@ -19,19 +19,19 @@
   },
   "dependencies": {
     "through2": "^0.6.5",
-    "webpcss": "^1.0.6"
+    "webpcss": "^1.1.0"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
-    "coveralls": "^2.11.2",
+    "chai": "^3.2.0",
+    "coveralls": "^2.11.4",
     "event-stream": "^3.3.1",
-    "gulp-util": "^3.0.5",
-    "istanbul": "^0.3.15",
-    "jscs": "^1.13.1",
+    "gulp-util": "^3.0.6",
+    "istanbul": "^0.3.20",
+    "jscs": "^2.1.1",
     "jshint": "^2.8.0",
-    "jshint-stylish": "^2.0.0",
-    "lodash": "^3.9.3",
-    "mocha": "^2.2.5",
+    "jshint-stylish": "^2.0.1",
+    "lodash": "^3.10.1",
+    "mocha": "^2.3.2",
     "mocha-lcov-reporter": "0.0.2"
   },
   "engines": {
