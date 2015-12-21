@@ -56,7 +56,7 @@ describe("gulp-webpcss", function() {
 
   it("should produce expected file 2 via buffer", function(done) {
     var stream = webpcss({
-      baseClass:".webp1",
+      webpClass:".webp1",
       replace_to:".webp"
     });
 
